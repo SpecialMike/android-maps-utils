@@ -184,19 +184,37 @@ public class Renderer {
             if (markerManager == null) {
                 markerManager = new MarkerManager(map);
             }
-            mMarkers = markerManager.newCollection();
+            if(markerManager.getCollection("default") != null){
+                mMarkers = markerManager.getCollection("default");
+            } else {
+                mMarkers = markerManager.newCollection("default");
+            }
+
             if (polygonManager == null) {
                 polygonManager = new PolygonManager(map);
             }
-            mPolygons = polygonManager.newCollection();
+            if(polygonManager.getCollection("default") != null){
+                mPolygons = polygonManager.getCollection("default");
+            } else {
+                mPolygons = polygonManager.newCollection("default");
+            }
+
             if (polylineManager == null) {
                 polylineManager = new PolylineManager(map);
             }
-            mPolylines = polylineManager.newCollection();
+            if(polylineManager.getCollection("default") != null){
+                mPolylines = polylineManager.getCollection("default");
+            } else {
+                mPolylines = polylineManager.newCollection("default");
+            }
             if (groundOverlayManager == null) {
                 groundOverlayManager = new GroundOverlayManager(map);
             }
-            mGroundOverlays = groundOverlayManager.newCollection();
+            if(groundOverlayManager.getCollection("default") != null) {
+                mGroundOverlays = groundOverlayManager.getCollection("default");
+            } else {
+                mGroundOverlays = groundOverlayManager.newCollection("default");
+            }
         } else {
             mMarkers = null;
             mPolygons = null;
