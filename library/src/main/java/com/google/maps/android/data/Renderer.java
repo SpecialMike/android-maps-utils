@@ -1148,23 +1148,25 @@ public class Renderer {
      * the info window to have custom HTML.
      */
     private void createInfoWindow() {
-        mMarkers.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+        if(mMarkers.getInfoWindowAdapter() == null){
+            mMarkers.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
 
-            public View getInfoWindow(@NonNull Marker arg0) {
-                return null;
-            }
-
-            public View getInfoContents(@NonNull Marker arg0) {
-                View view = LayoutInflater.from(mContext).inflate(R.layout.amu_info_window, null);
-                TextView infoWindowText = view.findViewById(R.id.window);
-                if (arg0.getSnippet() != null) {
-                    infoWindowText.setText(Html.fromHtml(arg0.getTitle() + "<br>" + arg0.getSnippet()));
-                } else {
-                    infoWindowText.setText(Html.fromHtml(arg0.getTitle()));
+                public View getInfoWindow(@NonNull Marker arg0) {
+                    return null;
                 }
-                return view;
-            }
-        });
+
+                public View getInfoContents(@NonNull Marker arg0) {
+                    View view = LayoutInflater.from(mContext).inflate(R.layout.amu_info_window, null);
+                    TextView infoWindowText = view.findViewById(R.id.window);
+                    if (arg0.getSnippet() != null) {
+                        infoWindowText.setText(Html.fromHtml(arg0.getTitle() + "<br>" + arg0.getSnippet()));
+                    } else {
+                        infoWindowText.setText(Html.fromHtml(arg0.getTitle()));
+                    }
+                    return view;
+                }
+            });
+        }
     }
 
     /**

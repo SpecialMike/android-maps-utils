@@ -196,5 +196,8 @@ public class MarkerManager extends MapObjectManager<Marker, MarkerManager.Collec
         public void setInfoWindowAdapter(GoogleMap.InfoWindowAdapter infoWindowAdapter) {
             mInfoWindowAdapter = infoWindowAdapter;
         }
+        public GoogleMap.InfoWindowAdapter getInfoWindowAdapter(){
+            return mInfoWindowAdapter;
+        }
     }
 }
